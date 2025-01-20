@@ -1,27 +1,7 @@
-<script>
-  export default {
-    data() {
-      return {
-        name: 'Viktor E. Degray',
-        status: 'loading',
-        tasks: ['task 1', 'task 2', 'task 3'],
-        link: 'https://vuejs.org',
-      }
-    }
-  }
+<script setup>
+// import OptionsAPIExample from './components/OptionsAPIExample.vue';
 </script>
 
 <template>
-  <h1>Vue playground by {{ name }}</h1>
-  <p v-if="status === 'active'"> user exists</p>
-  <p v-else-if="status === 'loading'">user is loading in</p>
-  <p v-else> user does not exist</p>
-
-  <h3>Tasks:</h3>
-  <ul>
-    <li v-for="task in tasks" :key="task">{{ task }}</li>
-  </ul>
-  <!-- <a v-bind:href="link" target="_blank">documentation</a> -->
-  <a :href="link" target="_blank">documentation</a>
+  <OptionsAPIExample />
 </template>
-
