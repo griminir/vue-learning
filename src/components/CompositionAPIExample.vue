@@ -1,22 +1,13 @@
-<script>
+<script setup>
     import { ref } from 'vue';
-    export default {
-        setup() {
-            const name = ref('Viktor E. Degray');
-            const status = ref('loading');
-            const tasks = ref(['task 1', 'task 2', 'task 3']);
 
-            const toggleStatus = () => {
-                status.value = status.value === 'active' ? 'inactive' : 'active';
-            };
+    const name = ref('Viktor E. Degray');
+    const status = ref('loading');
+    const tasks = ref(['task 1', 'task 2', 'task 3']);
 
-            return {
-                name,
-                status,
-                tasks,
-                toggleStatus,
-        }
-    }};
+    const toggleStatus = () => {
+        status.value = status.value === 'active' ? 'inactive' : 'active';
+    };
 </script>
 
 <template>
@@ -34,6 +25,4 @@
     <button @click="toggleStatus">change status</button>
 </template>
 
-<style scoped>
-    
-</style>
+<style scoped></style>
