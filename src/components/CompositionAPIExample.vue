@@ -1,13 +1,24 @@
 <script setup>
-    import { ref } from 'vue';
+import { ref } from 'vue';
 
-    const name = ref('Viktor E. Degray');
-    const status = ref('loading');
-    const tasks = ref(['task 1', 'task 2', 'task 3']);
+const name = ref('Viktor E. Degray');
+const status = ref('loading');
+const tasks = ref(['task 1', 'task 2', 'task 3']);
+const newTask = ref('');
 
-    const toggleStatus = () => {
-        status.value = status.value === 'active' ? 'inactive' : 'active';
-    };
+const toggleStatus = () => {
+    status.value = status.value === 'active' ? 'inactive' : 'active';
+};
+
+const addTask = () => {
+    if (!newTask.value) return;
+    tasks.value.push(newTask.value.trim());
+    newTask.value = '';
+};
+
+const deleteTask = (index) => {
+    tasks.value.splice(index, 1);
+};
 </script>
 
 <template>
@@ -15,10 +26,22 @@
     <p v-if="status === 'active'">user exists</p>
     <p v-else-if="status === 'loading'">user is loading in</p>
     <p v-else>user does not exist</p>
+    <br />
+
+    <form @submit.prevent="addTask">
+        <label for="newTask">Add task:</label>
+        <br />
+        <input type="text" id="newTask" name="newTask" v-model="newTask" />
+        <button type="submit">add task</button>
+    </form>
+    <br />
 
     <h3>Tasks:</h3>
     <ul>
-        <li v-for="task in tasks" :key="task">{{ task }}</li>
+        <li v-for="(task, index) in tasks" :key="task">
+            <span>{{ task }}</span>
+            <button @click="deleteTask(index)">X</button>
+        </li>
     </ul>
     <br />
     <!-- <button v-on:click="toggleStatus">change status</button> -->
