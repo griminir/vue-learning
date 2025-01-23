@@ -5,7 +5,7 @@
   export default {
     components: {
       OptionsAPIExample,
-      compositionAPIExample
+      CompositionAPIExample
     }
   }
 </script>
