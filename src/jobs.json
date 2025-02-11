@@ -99,32 +99,18 @@
       }
     },
     {
-      "id": "9058",
-      "title": "Lewis Thompson",
-      "type": "Part-Time",
-      "description": "Eaque provident par",
-      "location": "Debitis voluptatem t",
-      "salary": "$60K - $70K",
+      "title": "timmy master of stuff personal person",
+      "type": "Full-Time",
+      "description": "do what timmy says",
+      "location": "timmy land",
+      "salary": "Under $50K",
       "company": {
-        "name": "Wilson Monroe LLC",
-        "description": "Iure a ut aliquip il",
-        "contactEmail": "belyzi@mailinator.com",
-        "contactPhone": "+1 (709) 327-5861"
-      }
-    },
-    {
-      "id": "52ce",
-      "title": "Rebekah Arnold",
-      "type": "Internship",
-      "description": "Eu officia natus sit",
-      "location": "Quae et harum aut ea",
-      "salary": "$80K - $90K",
-      "company": {
-        "name": "Mcneil and Hebert Trading",
-        "description": "Voluptatem eaque es",
-        "contactEmail": "kisaby@mailinator.com",
+        "name": "timmy llc",
+        "description": "just something timmy made in his spare time",
+        "contactEmail": "timmy@mailinator.com",
         "contactPhone": "+1 (163) 141-1745"
-      }
+      },
+      "id": "52ce"
     }
   ]
 }
