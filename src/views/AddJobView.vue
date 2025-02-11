@@ -2,7 +2,7 @@
 import { reactive } from 'vue';
 import axios from 'axios';
 import { useToast } from 'vue-toastification';
-import router from '@/router';
+import { useRouter } from 'vue-router';
 
 const form = reactive({
   type: 'Full-Time',
@@ -18,6 +18,7 @@ const form = reactive({
   },
 });
 
+const router = useRouter();
 const toast = useToast();
 
 const handleSubmit = async () => {

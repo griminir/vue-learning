@@ -111,6 +111,20 @@
         "contactEmail": "belyzi@mailinator.com",
         "contactPhone": "+1 (709) 327-5861"
       }
+    },
+    {
+      "id": "52ce",
+      "title": "Rebekah Arnold",
+      "type": "Internship",
+      "description": "Eu officia natus sit",
+      "location": "Quae et harum aut ea",
+      "salary": "$80K - $90K",
+      "company": {
+        "name": "Mcneil and Hebert Trading",
+        "description": "Voluptatem eaque es",
+        "contactEmail": "kisaby@mailinator.com",
+        "contactPhone": "+1 (163) 141-1745"
+      }
     }
   ]
 }

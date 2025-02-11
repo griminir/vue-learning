@@ -2,16 +2,31 @@
 import { reactive, onMounted } from 'vue';
 import BackButton from '@/components/BackButton.vue';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
-import { useRoute, RouterLink } from 'vue-router';
+import { useRoute, RouterLink, useRouter } from 'vue-router';
+import { useToast } from 'vue-toastification';
 import axios from 'axios';
 
 const route = useRoute();
+const router = useRouter();
+const toast = useToast();
+
 const jobId = route.params.id;
 
 const state = reactive({
   job: {},
   isLoading: true,
 });
+
+const deleteJob = async () => {
+  try {
+    await axios.delete(`/api/jobs/${jobId}`);
+    router.push('/jobs');
+    toast.success('Job deleted successfully!');
+  } catch (error) {
+    console.error('Error deleting job', error);
+    toast.error('job not deleted!');
+  }
+};
 
 onMounted(async () => {
   try {
@@ -34,15 +49,13 @@ onMounted(async () => {
           <div
             class="bg-white p-6 rounded-lg shadow-md text-center md:text-left"
           >
-            <div class="text-gray-500 mb-4">{{state.job.type}}</div>
+            <div class="text-gray-500 mb-4">{{ state.job.type }}</div>
             <h1 class="text-3xl font-bold mb-4">{{ state.job.title }}</h1>
             <div
               class="text-gray-500 mb-4 flex align-middle justify-center md:justify-start"
             >
-              <i
-                class="pi pi-map-marker text-xl text-orange-700 mr-2"
-              ></i>
-              <p class="text-orange-700">{{state.job.location}}</p>
+              <i class="pi pi-map-marker text-xl text-orange-700 mr-2"></i>
+              <p class="text-orange-700">{{ state.job.location }}</p>
             </div>
           </div>
 
@@ -52,12 +65,12 @@ onMounted(async () => {
             </h3>
 
             <p class="mb-4">
-              {{state.job.description}}
+              {{ state.job.description }}
             </p>
 
             <h3 class="text-green-800 text-lg font-bold mb-2">Salary</h3>
 
-            <p class="mb-4">{{state.job.salary}} / Year</p>
+            <p class="mb-4">{{ state.job.salary }} / Year</p>
           </div>
         </main>
 
@@ -78,12 +91,14 @@ onMounted(async () => {
             <h3 class="text-xl">Contact Email:</h3>
 
             <p class="my-2 bg-green-100 p-2 font-bold">
-              {{ state.job.company.contactEmail}}
+              {{ state.job.company.contactEmail }}
             </p>
 
             <h3 class="text-xl">Contact Phone:</h3>
 
-            <p class="my-2 bg-green-100 p-2 font-bold">{{ state.job.company.contactPhone }}</p>
+            <p class="my-2 bg-green-100 p-2 font-bold">
+              {{ state.job.company.contactPhone }}
+            </p>
           </div>
 
           <!-- Manage -->
@@ -95,6 +110,7 @@ onMounted(async () => {
               >Edit Job</RouterLink
             >
             <button
+              @click="deleteJob"
               class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
             >
               Delete Job
